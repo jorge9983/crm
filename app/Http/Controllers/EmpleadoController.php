@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Empresa;
+use App\Empleado;
 
-class EmpresaController extends Controller
+class EmpleadoController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -19,9 +20,9 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        $empresas = Empresa::all();
+        $empleados = Empleado::all();
         //$empresas =  App\Empresa::where('id', isNonEmptyString())->paginate(10);
-        return view('empresas.lista', compact('empresas'));
+        return view('empleados.lista', compact('empleados'));
     }
 
     /**
@@ -31,7 +32,7 @@ class EmpresaController extends Controller
      */
     public function create()
     {
-        return view('empresas.crear');
+        //
     }
 
     /**
@@ -42,13 +43,7 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        $empresa = new Empresa();
-        $empresa->nombre = $request->nombre;
-        $empresa->correo = $request->correo;
-        $empresa->sitioweb = $request->sitioweb;
-        $empresa->save();
-
-        return back()->with('mensaje', 'Empresa Agregada!');
+        //
     }
 
     /**
@@ -59,8 +54,7 @@ class EmpresaController extends Controller
      */
     public function show($id)
     {
-        $empresa = Empresa::findOrFail($id);
-        return view('empresas.detalle', compact('empresa'));
+        //
     }
 
     /**
@@ -71,16 +65,8 @@ class EmpresaController extends Controller
      */
     public function edit($id)
     {
-        $empresa = Empresa::findOrFail($id);
-        return view('empresas.editar', compact('empresa'));
+        //
     }
-
-    // public function detalle($id)
-    // {
-    //     $empresa = Empresa::findOrFail($id);
-    //     return view('empresas.detalle', compact('empresa'));
-    // }
-
 
     /**
      * Update the specified resource in storage.
@@ -91,12 +77,7 @@ class EmpresaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $empresaActualizada = Empresa::find($id);
-        $empresaActualizada->nombre = $request->nombre;
-        $empresaActualizada->correo = $request->correo;
-        $empresaActualizada->sitioweb = $request->sitioweb;
-        $empresaActualizada->save();
-        return back()->with('mensaje', 'Empresa editada!');
+        //
     }
 
     /**

@@ -19,10 +19,21 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::resource('/empresas','EmpresaController');
+Route::resource('/empresas', 'EmpresaController');
+
+Route::get('/', 'EmpresaController@index')->name('empresas');
+
+Route::get('/empresas/{id}', 'EmpresaController@detalle')->name('empresas.detalle');
+
+Route::get('/empresas/{id}/edit', 'EmpresaController@detalle')->name('empresas.edit');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/empleados', 'EmpleadoController');
+
+Route::get('/empleados', 'EmpleadoController@index')->name('empleados');
+
+// Route::get('/empleados/{id}', 'EmpleadoController@detalle')->name('empleados.detalle');
+
+// Route::get('/empleados/{id}/edit', 'EmpleadoController@detalle')->name('empleados.edit');
