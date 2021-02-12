@@ -29,8 +29,8 @@
     @enderror
 
     <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2" value="{{ $empresa->nombre }}">
-    <input type="text" name="correo" placeholder="Correo" class="form-control mb-2" value="{{ $empresa->correo }}">
-    <input type="text" name="sitioweb" placeholder="Sitio Web" class="form-control mb-2" value="{{ $empresa->sitioweb }}">
+    <input type="email" name="correo" placeholder="Correo" class="form-control mb-2" value="{{ $empresa->correo }}">
+    <input type="url" name="sitioweb" placeholder="Sitio Web" class="form-control mb-2" value="{{ $empresa->sitioweb }}">
     <button class="btn btn-warning btn-block" type="submit">Editar</button>
 </form>
 @endsection

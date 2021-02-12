@@ -19,8 +19,8 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        $empresas = Empresa::all();
-        //$empresas =  App\Empresa::where('id', isNonEmptyString())->paginate(10);
+        //$empresas = Empresa::all();
+        $empresas = Empresa::paginate(10);
         return view('empresas.lista', compact('empresas'));
     }
 
@@ -107,6 +107,9 @@ class EmpresaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $empresaEliminar = Empresa::findOrFail($id);
+        $empresaEliminar->delete();
+
+        return back()->with('mensaje', 'Empresa Eliminada');
     }
 }

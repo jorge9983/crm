@@ -22,13 +22,13 @@
                       class="form-control mb-2"
                     />
                     <input
-                      type="text"
+                      type="email"
                       name="correo"
                       placeholder="Correo electronico"
                       class="form-control mb-2"
                     />
                     <input
-                      type="text"
+                      type="url"
                       name="sitioweb"
                       placeholder="Sitio Web"
                       class="form-control mb-2"

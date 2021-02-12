@@ -34,12 +34,13 @@
                                 <td>{{ $item->sitioweb }}</td>
                                 <td>
                                     <a href="{{route('empresas.edit', $item)}}" class="btn btn-warning btn-sm">Editar</a>
+                                    <a href="{{route('empresas.destroy', $item)}}" class="btn btn-danger btn-sm">Eliminar</a>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
-
+                    {{$empresas->links()}}
                     {{-- fin card body --}}
                 </div>
             </div>

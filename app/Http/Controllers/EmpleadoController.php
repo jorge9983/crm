@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Empleado;
+use App\Empresa;
 
 class EmpleadoController extends Controller
 {
@@ -20,8 +21,8 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $empleados = Empleado::all();
-        //$empresas =  App\Empresa::where('id', isNonEmptyString())->paginate(10);
+        //$empleados = Empleado::all();
+        $empleados = Empleado::paginate(10);
         return view('empleados.lista', compact('empleados'));
     }
 
@@ -32,7 +33,8 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        //
+        $empresas = Empresa::all();
+        return view('empleados.crear', compact('empresas'));
     }
 
     /**
@@ -43,7 +45,16 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //return $request;
+        $empleado = new Empleado();
+        $empleado->nombre = $request->nombre;
+        $empleado->apellido = $request->apellido;
+        $empleado->correo = $request->correo;
+        $empleado->telefono = $request->telefono;
+        $empleado->empresa_id = $request->empresa_id;
+        $empleado->save();
+
+        return back()->with('mensaje', 'Empleado Agregado!');
     }
 
     /**
@@ -54,7 +65,11 @@ class EmpleadoController extends Controller
      */
     public function show($id)
     {
-        //
+        $empleado = Empleado::findOrFail($id);
+        //$idEmpresa =$empleado->empresa_id;
+        $empresa = Empresa::findOrFail($empleado->empresa_id);
+        if ($empresa != null)
+            return view('empleados.detalle', compact('empleado', 'empresa'));
     }
 
     /**
@@ -65,7 +80,9 @@ class EmpleadoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $empleado = Empleado::findOrFail($id);
+        $empresas = Empresa::all();
+        return view('empleados.editar', compact('empleado', 'empresas'));
     }
 
     /**
@@ -77,7 +94,14 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $empleadoActualizado = Empleado::find($id);
+        $empleadoActualizado->nombre = $request->nombre;
+        $empleadoActualizado->apellido = $request->apellido;
+        $empleadoActualizado->correo = $request->correo;
+        $empleadoActualizado->telefono = $request->telefono;
+        $empleadoActualizado->empresa_id = $request->empresa_id;
+        $empleadoActualizado->save();
+        return back()->with('mensaje', 'Empleado editado!');
     }
 
     /**
@@ -88,6 +112,9 @@ class EmpleadoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $empleadoEliminar = Empleado::findOrFail($id);
+        $empleadoEliminar->delete();
+
+        return back()->with('mensaje', 'Empleado Eliminado');
     }
 }
