@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use App\Empresa;
+use App\Empleado;
 
 class UsuariosTableSeeder extends Seeder
 {

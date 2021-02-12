@@ -1,10 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="display-6">Detalle de la Empresa</h1>
-<h4>Nombre: {{$empresa->nombre}}</h4>
-<h4>Correo: {{$empresa->correo}}</h4>
-<h4>Sitio Web: {{$empresa->sitioweb}}</h4>
+<div class="container my-2">
+    <h1 class="display-6">Detalle de la Empresa</h1>
+    <h4>Nombre: {{$empresa->nombre}}</h4>
+    <h4>Correo: {{$empresa->correo}}</h4>
+    <h4>Sitio Web: {{$empresa->sitioweb}}</h4>
+    <br>
+</div>
 
 
 <div class="container my-2">
@@ -29,4 +32,5 @@
             @endforeach
         </tbody>
     </table>
-    @endsection
+</div>
+@endsection

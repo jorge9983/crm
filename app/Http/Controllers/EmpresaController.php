@@ -42,6 +42,13 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required',
+            'correo' => 'required',
+            'sitioweb' => 'required'
+        ]);
+
+        
         $empresa = new Empresa();
         $empresa->nombre = $request->nombre;
         $empresa->correo = $request->correo;
@@ -91,6 +98,12 @@ class EmpresaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nombre' => 'required',
+            'correo' => 'required',
+            'sitioweb' => 'required'
+        ]);
+        
         $empresaActualizada = Empresa::find($id);
         $empresaActualizada->nombre = $request->nombre;
         $empresaActualizada->correo = $request->correo;

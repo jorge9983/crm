@@ -45,6 +45,13 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'correo' => 'required',
+            'telefono' => 'required'
+        ]);
+
         //return $request;
         $empleado = new Empleado();
         $empleado->nombre = $request->nombre;
@@ -94,6 +101,13 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'correo' => 'required',
+            'telefono' => 'required'
+        ]);
+
         $empleadoActualizado = Empleado::find($id);
         $empleadoActualizado->nombre = $request->nombre;
         $empleadoActualizado->apellido = $request->apellido;
